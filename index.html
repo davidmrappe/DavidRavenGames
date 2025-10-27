@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Raven Games</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            background-color: #000;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 2px solid #8B0000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #FF0000;
+        }
+
+        /* Section Styling */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Home Section */
+        #home {
+            background: linear-gradient(to bottom, #000 0%, #1a0000 100%);
+            overflow: hidden;
+        }
+
+        .home-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .background-split {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .background-split.left {
+            left: 0;
+        }
+
+        .background-split.right {
+            right: 0;
+        }
+
+        .background-split img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .background-split.left::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 100%;
+            background: linear-gradient(to right, 
+                transparent 0%, 
+                rgba(0, 0, 0, 0.3) 20%,
+                rgba(139, 0, 0, 0.4) 50%,
+                rgba(255, 0, 0, 0.3) 80%,
+                rgba(0, 0, 0, 0.95) 100%);
+        }
+
+        .background-split.right::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            background: linear-gradient(to left, 
+                transparent 0%, 
+                rgba(0, 0, 0, 0.3) 20%,
+                rgba(139, 0, 0, 0.4) 50%,
+                rgba(255, 0, 0, 0.3) 80%,
+                rgba(0, 0, 0, 0.95) 100%);
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
+            padding: 60px;
+        }
+
+        .logo-container img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+        }
+
+
+
+        /* Games Section */
+        #games {
+            background: linear-gradient(to bottom, #1a0000 0%, #000 50%, #1a0000 100%);
+            padding: 100px 20px;
+        }
+
+        .games-container {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 56px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 80px;
+            color: #FF0000;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            padding: 0 40px;
+        }
+
+        .game-card {
+            background: linear-gradient(135deg, #1a0000 0%, #000 100%);
+            border: 2px solid #8B0000;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            border-color: #FF0000;
+        }
+
+        .game-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-bottom: 2px solid #8B0000;
+        }
+
+        .game-content {
+            padding: 30px;
+        }
+
+        .game-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #FF0000;
+            margin-bottom: 15px;
+        }
+
+        .game-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        /* About Section */
+        #about {
+            background: linear-gradient(to bottom, #1a0000 0%, #000 100%);
+            padding: 100px 20px;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .about-content {
+            font-size: 20px;
+            line-height: 2;
+            color: #ccc;
+            margin-top: 40px;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(to bottom, #000 0%, #1a0000 100%);
+            padding: 100px 20px;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .contact-content {
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            font-size: 20px;
+            color: #ccc;
+            margin: 20px 0;
+        }
+
+        .contact-info a {
+            color: #FF0000;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #fff;
+        }
+
+        .social-links {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social-links a {
+            color: #FF0000;
+            font-size: 24px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            nav ul {
+                gap: 30px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 20px;
+            }
+
+            nav a {
+                font-size: 16px;
+            }
+
+            .company-name {
+                font-size: 32px;
+            }
+
+            .logo-container img {
+                max-width: 250px;
+            }
+
+            .section-title {
+                font-size: 36px;
+                margin-bottom: 50px;
+            }
+
+            .game-title {
+                font-size: 26px;
+            }
+
+            .background-split.left::after,
+            .background-split.right::after {
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Get in Touch</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="home-container">
+            <div class="background-split left">
+                <img src="wizardtowerhome.jpg" alt="Wizard's Tower">
+            </div>
+            <div class="background-split right">
+                <img src="alienatehome.jpg" alt="Alienate">
+            </div>
+            <div class="logo-container">
+                <img src="ravenlogo.jpg" alt="David Raven Games Logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games">
+        <div class="games-container">
+            <h2 class="section-title">Our Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <img src="alienate-game.jpg" alt="Alienate" class="game-image">
+                    <div class="game-content">
+                        <h3 class="game-title">Alienate</h3>
+                        <p class="game-description">
+                            A thrilling sci-fi strategy game where players navigate complex political alliances and interstellar conflicts. Build your empire, forge alliances, and conquer the galaxy in this epic space adventure.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <img src="wizardtower-game.jpg" alt="Wizard's Tower" class="game-image">
+                    <div class="game-content">
+                        <h3 class="game-title">Wizard's Tower</h3>
+                        <p class="game-description">
+                            Ascend the mystical tower in this enchanting card game of strategy and magic. Collect powerful spells, outwit your opponents, and be the first wizard to reach the tower's peak.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <img src="crew-game.jpg" alt="Crew" class="game-image">
+                    <div class="game-content">
+                        <h3 class="game-title">Crew</h3>
+                        <p class="game-description">
+                            Assemble your perfect crew in this cooperative adventure game. Work together to overcome challenges, manage resources, and complete daring missions that will test your teamwork skills.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <img src="draw-game.jpg" alt="Draw!" class="game-image">
+                    <div class="game-content">
+                        <h3 class="game-title">Draw!</h3>
+                        <p class="game-description">
+                            Fast-paced creative fun meets competitive gameplay! Sketch, guess, and score points in this hilarious drawing party game that's perfect for players of all ages and skill levels.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <p>
+                    David Raven Games is dedicated to creating unforgettable board game experiences that bring people together. Founded with a passion for innovative gameplay and stunning design, we craft games that challenge the mind and spark the imagination.
+                </p>
+                <p style="margin-top: 30px;">
+                    From strategic space operas to magical tower adventures, our diverse portfolio offers something for every type of gamer. We believe that the best games are those that create lasting memories and forge strong connections between players.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-content">
+                <p class="contact-info">
+                    Interested in our games or want to learn more?<br>
+                    We'd love to hear from you!
+                </p>
+                <p class="contact-info">
+                    Email: <a href="mailto:info@davidravengames.com">info@davidravengames.com</a>
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="BoardGameGeek">🎲</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll enhancement
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Add active state to navigation
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.style.color = '#fff';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = '#FF0000';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
