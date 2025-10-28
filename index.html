@@ -274,22 +274,35 @@
 
         .social-button {
             text-align: center;
-            margin-bottom: 40px;
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 101;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
         }
 
         .social-button a {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 15px 35px;
             background-color: #8B0000;
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
+            font-size: 18px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+            margin: 0;
         }
 
         .social-button a:hover {
             background-color: #FF0000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
         }
 
         .games-grid {
@@ -517,16 +530,16 @@
             <div class="logo-container">
                 <img src="ravenlogo.png" alt="David Raven Games Logo">
             </div>
+            <div class="social-button">
+                <a href="https://www.instagram.com/davidravengames" target="_blank">📷 Follow us on Instagram</a>
+                <a href="https://www.kickstarter.com/profile/davidravengames" target="_blank">🚀 Support us on Kickstarter</a>
+            </div>
         </div>
     </section>
 
     <!-- Games Section -->
     <section id="games">
         <div class="games-container">
-            <div class="social-button">
-                <a href="https://www.instagram.com/davidravengames" target="_blank">ðŸ“· Follow us on Instagram</a>
-                <a href="https://www.kickstarter.com/profile/davidravengames" target="_blank" style="margin-left: 20px;">ðŸš€ Support us on Kickstarter</a>
-            </div>
             <h2 class="section-title">Our Games</h2>
             <div class="games-grid">
                 <div class="game-card">
