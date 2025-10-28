@@ -80,11 +80,18 @@
         .background-half {
             position: absolute;
             top: 0;
-            left: 0;
             width: 50%;
             height: 100%;
             overflow: hidden;
             z-index: 1;
+        }
+
+        .background-half.left {
+            left: 0;
+        }
+
+        .background-half.right {
+            right: 0;
         }
 
         .background-half img {
@@ -301,8 +308,11 @@
     <!-- Home Section -->
     <section id="home">
         <div class="home-container">
-            <div class="background-half">
+            <div class="background-half left">
                 <img src="wizardtowerhome.JPG" alt="Wizard's Tower Background">
+            </div>
+            <div class="background-half right">
+                <img src="alienatehome.jpg" alt="Alienate Background">
             </div>
             <div class="logo-container">
                 <img src="ravenlogo.png" alt="David Raven Games Logo">
