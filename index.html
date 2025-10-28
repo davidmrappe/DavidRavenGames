@@ -171,6 +171,26 @@
             letter-spacing: 4px;
         }
 
+        .social-button {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .social-button a {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #8B0000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-button a:hover {
+            background-color: #FF0000;
+        }
+
         .games-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -221,9 +241,39 @@
             padding: 100px 20px;
         }
 
-        .about-container {
+        /* Video Blog Section */
+        #videoblog {
+            background: linear-gradient(to bottom, #000 0%, #1a0000 100%);
+            padding: 100px 20px;
+        }
+
+        .videoblog-container {
             max-width: 1000px;
             text-align: center;
+        }
+
+        .videoblog-content {
+            margin-top: 40px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            position: relative;
+        }
+
+        .about-container .section-title {
+            text-align: center;
+        }
+
+        .about-profile {
+            float: right;
+            width: 250px;
+            margin: 0 0 30px 30px;
+            border: 3px solid #8B0000;
+            border-radius: 10px;
         }
 
         .about-content {
@@ -231,6 +281,7 @@
             line-height: 2;
             color: #ccc;
             margin-top: 40px;
+            text-align: left;
         }
 
         /* Contact Section */
@@ -335,6 +386,7 @@
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#games">Games</a></li>
+            <li><a href="#videoblog">Video Blog</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#contact">Get in Touch</a></li>
         </ul>
@@ -358,6 +410,10 @@
     <!-- Games Section -->
     <section id="games">
         <div class="games-container">
+            <div class="social-button">
+                <a href="https://www.instagram.com/davidravengames" target="_blank">📷 Follow us on Instagram</a>
+                <a href="https://www.kickstarter.com/profile/davidravengames" target="_blank" style="margin-left: 20px;">🚀 Support us on Kickstarter</a>
+            </div>
             <h2 class="section-title">Our Games</h2>
             <div class="games-grid">
                 <div class="game-card">
@@ -365,7 +421,7 @@
                     <div class="game-content">
                         <h3 class="game-title">Alienate</h3>
                         <p class="game-description">
-                            A thrilling sci-fi strategy game where players navigate complex political alliances and interstellar conflicts. Build your empire, forge alliances, and conquer the galaxy in this epic space adventure.
+                            Whom do you trust? Betray your friends and seek allies in this fast-paced card game of secret roles and Sci-Fi tech. Play cards for other players: give them a truth serum to find out who they really are, or hand them a laser cannon to destroy your hidden enemies... you just better hope they don't use it on you! This is a free for all game of secrets and fun surprises.
                         </p>
                     </div>
                 </div>
@@ -375,7 +431,7 @@
                     <div class="game-content">
                         <h3 class="game-title">Wizard's Tower</h3>
                         <p class="game-description">
-                            Ascend the mystical tower in this enchanting card game of strategy and magic. Collect powerful spells, outwit your opponents, and be the first wizard to reach the tower's peak.
+                            Climb the Wizard's Tower! Three intrepid adventurers band together to open seals, loot chests, and defeat the wizard's myriad of randomly generated monsters. But watch out: the wizard is cunning, a master of spells, traps, and curses. Be careful when you venture into the wizard's tower... few escape to tell the tale. This is a 3v1, asymmetrical dungeon crawler with 4 unique classes and an almost infinite combination of loot, monsters, and tower layouts.
                         </p>
                     </div>
                 </div>
@@ -385,7 +441,7 @@
                     <div class="game-content">
                         <h3 class="game-title">Crew</h3>
                         <p class="game-description">
-                            Assemble your perfect crew in this cooperative adventure game. Work together to overcome challenges, manage resources, and complete daring missions that will test your teamwork skills.
+                            Work together with your pirate crew in this cooperative game. Man the sails, batten down the hatches, and slay the mighty Kraken on your treacherous journey to treasure island. But beware... only one pirate can assemble the treasure map and claim the treasure! This is a cooperative game where up to six players battle against a deck of hazards while competing against each other for pieces of a coveted treasure map.
                         </p>
                     </div>
                 </div>
@@ -395,10 +451,20 @@
                     <div class="game-content">
                         <h3 class="game-title">Draw!</h3>
                         <p class="game-description">
-                            Fast-paced creative fun meets competitive gameplay! Sketch, guess, and score points in this hilarious drawing party game that's perfect for players of all ages and skill levels.
+                            It's high noon. The saloon doors swing in the wind, dust devils drift down a sun-baked road, and the cowboys and cowgirls of this boom town gather for a good old fashioned shootout! Draw your cards, draw your six-shooters, and point your finger guns at your friends to shoot them down. Are you the fastest gun in the west, or just another dinner for the circling vultures? This is a fast paced, free for all card game for 3 to 10 players.
                         </p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Blog Section -->
+    <section id="videoblog">
+        <div class="videoblog-container">
+            <h2 class="section-title">Video Blog</h2>
+            <div class="videoblog-content">
+                <p>Coming soon! Stay tuned for behind-the-scenes looks at game development, playtesting sessions, and design insights.</p>
             </div>
         </div>
     </section>
@@ -408,11 +474,21 @@
         <div class="about-container">
             <h2 class="section-title">About Us</h2>
             <div class="about-content">
+                <img src="david.jpg" alt="David Rappe" class="about-profile">
                 <p>
-                    David Raven Games is dedicated to creating unforgettable board game experiences that bring people together. Founded with a passion for innovative gameplay and stunning design, we craft games that challenge the mind and spark the imagination.
+                    David Raven Games is a board game company run by Portland game designer David Rappe. David has been designing board games since he was six years old, and has been playing them as long as he can remember.
                 </p>
                 <p style="margin-top: 30px;">
-                    From strategic space operas to magical tower adventures, our diverse portfolio offers something for every type of gamer. We believe that the best games are those that create lasting memories and forge strong connections between players.
+                    He likes thinking of new game mechanics that haven't been done before, always trying to make his games thought-provoking and easy to learn. David loves games that have clever, clean mechanics without a lot of fluff, and although he enjoys complexity, he doesn't like unnecessary complication. Above all else, David's golden rule when designing games is simple: everyone should be having fun at all times!
+                </p>
+                <p style="margin-top: 30px;">
+                    David gets a lot of help from his friends and loved ones, who are always willing to test his games, pitch in with great ideas, and critique his less-inventive ones.
+                </p>
+                <p style="margin-top: 30px;">
+                    David's favorite board games are Game of Thrones: The Board Game, War of the Ring, and Coup. He plays the Middle Earth Strategy Battle Game, Magic: The Gathering, Sorcery: Contested Realm, and the Middle Earth Collectible Card Game.
+                </p>
+                <p style="margin-top: 30px;">
+                    Join David on his vlog, and if you're interested in any of his games, sign up for his mailing list and/or support him on Kickstarter. If you're interested in providing graphic design work, artwork, or you want to collaborate on a project, please feel free to reach out to him here.
                 </p>
             </div>
         </div>
