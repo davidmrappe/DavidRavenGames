@@ -241,20 +241,26 @@
             background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
             padding: 60px;
             margin-top: -300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .logo-container img {
             max-width: 1500px;
             width: 100%;
             height: auto;
+            display: block;
         }
 
         .home-social-buttons {
-            margin-top: 40px;
+            margin-top: 50px;
             display: flex;
             gap: 20px;
             justify-content: center;
             align-items: center;
+            position: relative;
+            z-index: 101;
         }
 
         .home-social-buttons a {
@@ -677,7 +683,7 @@
         window.addEventListener('load', function() {
             const loadingScreen = document.getElementById('loading-screen');
             
-            // Wait 2.5 seconds then fade out
+            // Wait 1.5 seconds then fade out
             setTimeout(function() {
                 loadingScreen.classList.add('fade-out');
                 
@@ -685,7 +691,7 @@
                 setTimeout(function() {
                     loadingScreen.style.display = 'none';
                 }, 800);
-            }, 2500);
+            }, 1500);
         });
 
         // Dice rolling on scroll
