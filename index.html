@@ -249,6 +249,33 @@
             height: auto;
         }
 
+        .home-social-buttons {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .home-social-buttons a {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: #8B0000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+        }
+
+        .home-social-buttons a:hover {
+            background-color: #FF0000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+
 
 
         /* Games Section */
@@ -467,6 +494,18 @@
                 max-width: 937px;
             }
 
+            .home-social-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .home-social-buttons a {
+                width: 100%;
+                max-width: 300px;
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+
             .section-title {
                 font-size: 36px;
                 margin-bottom: 50px;
@@ -516,6 +555,10 @@
             </div>
             <div class="logo-container">
                 <img src="ravenlogo.png" alt="David Raven Games Logo">
+                <div class="home-social-buttons">
+                    <a href="https://www.instagram.com/davidravengames" target="_blank">📷 Follow us on Instagram</a>
+                    <a href="https://www.kickstarter.com/profile/davidravengames" target="_blank">🚀 Support us on Kickstarter</a>
+                </div>
             </div>
         </div>
     </section>
