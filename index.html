@@ -33,6 +33,38 @@
             border-bottom: 2px solid #8B0000;
         }
 
+        .dice-container {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+        }
+
+        .dice {
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 6px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 2px;
+            padding: 4px;
+            transition: transform 0.1s ease-out;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .dice .dot {
+            width: 6px;
+            height: 6px;
+            background-color: #000;
+            border-radius: 50%;
+            margin: auto;
+        }
+
         nav ul {
             list-style: none;
             display: flex;
@@ -297,6 +329,9 @@
 <body>
     <!-- Navigation -->
     <nav>
+        <div class="dice-container">
+            <div class="dice" id="dice"></div>
+        </div>
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#games">Games</a></li>
@@ -406,6 +441,68 @@
     </section>
 
     <script>
+        // Dice rolling on scroll
+        const dice = document.getElementById('dice');
+        let lastScrollY = window.scrollY;
+        let isRolling = false;
+
+        // Function to create dice face
+        function createDiceFace(number) {
+            dice.innerHTML = '';
+            const dotPositions = {
+                1: [4], // center
+                2: [0, 8], // top-left, bottom-right
+                3: [0, 4, 8], // top-left, center, bottom-right
+                4: [0, 2, 6, 8], // corners
+                5: [0, 2, 4, 6, 8], // corners + center
+                6: [0, 2, 3, 5, 6, 8] // two columns
+            };
+
+            for (let i = 0; i < 9; i++) {
+                const cell = document.createElement('div');
+                if (dotPositions[number].includes(i)) {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    cell.appendChild(dot);
+                }
+                dice.appendChild(cell);
+            }
+        }
+
+        // Initialize with 6
+        createDiceFace(6);
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+            
+            if (scrollDelta > 5 && !isRolling) {
+                isRolling = true;
+                
+                // Create rolling animation
+                let rollCount = 0;
+                const rollInterval = setInterval(() => {
+                    const randomFace = Math.floor(Math.random() * 6) + 1;
+                    createDiceFace(randomFace);
+                    
+                    // Add rotation effect
+                    const randomRotation = Math.random() * 360;
+                    dice.style.transform = `rotate(${randomRotation}deg)`;
+                    
+                    rollCount++;
+                    if (rollCount >= 8) {
+                        clearInterval(rollInterval);
+                        dice.style.transform = 'rotate(0deg)';
+                        setTimeout(() => {
+                            isRolling = false;
+                        }, 300);
+                    }
+                }, 50);
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
         // Smooth scroll enhancement
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
