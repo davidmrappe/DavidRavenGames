@@ -677,7 +677,7 @@
         window.addEventListener('load', function() {
             const loadingScreen = document.getElementById('loading-screen');
             
-            // Wait 5 seconds then fade out
+            // Wait 2.5 seconds then fade out
             setTimeout(function() {
                 loadingScreen.classList.add('fade-out');
                 
@@ -685,7 +685,7 @@
                 setTimeout(function() {
                     loadingScreen.style.display = 'none';
                 }, 800);
-            }, 5000);
+            }, 2500);
         });
 
         // Dice rolling on scroll
