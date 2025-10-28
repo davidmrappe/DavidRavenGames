@@ -77,64 +77,13 @@
             position: relative;
         }
 
-        .background-split {
-            position: absolute;
-            top: 0;
-            width: 50%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .background-split.left {
-            left: 0;
-        }
-
-        .background-split.right {
-            right: 0;
-        }
-
-        .background-split img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .background-split.left::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 200px;
-            height: 100%;
-            background: linear-gradient(to right, 
-                transparent 0%, 
-                rgba(0, 0, 0, 0.3) 20%,
-                rgba(139, 0, 0, 0.4) 50%,
-                rgba(255, 0, 0, 0.3) 80%,
-                rgba(0, 0, 0, 0.95) 100%);
-        }
-
-        .background-split.right::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200px;
-            height: 100%;
-            background: linear-gradient(to left, 
-                transparent 0%, 
-                rgba(0, 0, 0, 0.3) 20%,
-                rgba(139, 0, 0, 0.4) 50%,
-                rgba(255, 0, 0, 0.3) 80%,
-                rgba(0, 0, 0, 0.95) 100%);
-        }
-
         .logo-container {
             position: relative;
             z-index: 10;
             text-align: center;
             background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
             padding: 60px;
+            margin-top: -300px;
         }
 
         .logo-container img {
@@ -318,11 +267,6 @@
             .game-title {
                 font-size: 26px;
             }
-
-            .background-split.left::after,
-            .background-split.right::after {
-                width: 100px;
-            }
         }
     </style>
 </head>
@@ -340,12 +284,6 @@
     <!-- Home Section -->
     <section id="home">
         <div class="home-container">
-            <div class="background-split left">
-                <img src="wizardtowerhome.jpg" alt="Wizard's Tower">
-            </div>
-            <div class="background-split right">
-                <img src="alienatehome.jpg" alt="Alienate">
-            </div>
             <div class="logo-container">
                 <img src="ravenlogo.png" alt="David Raven Games Logo">
             </div>
