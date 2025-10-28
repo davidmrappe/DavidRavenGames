@@ -77,9 +77,26 @@
             position: relative;
         }
 
+        .background-half {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .background-half img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(3px);
+        }
+
         .logo-container {
             position: relative;
-            z-index: 10;
+            z-index: 100;
             text-align: center;
             background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
             padding: 60px;
@@ -87,7 +104,7 @@
         }
 
         .logo-container img {
-            max-width: 1200px;
+            max-width: 1500px;
             width: 100%;
             height: auto;
         }
@@ -256,7 +273,7 @@
             }
 
             .logo-container img {
-                max-width: 750px;
+                max-width: 937px;
             }
 
             .section-title {
@@ -284,6 +301,9 @@
     <!-- Home Section -->
     <section id="home">
         <div class="home-container">
+            <div class="background-half">
+                <img src="wizardtowerhome.jpg" alt="Wizard's Tower Background">
+            </div>
             <div class="logo-container">
                 <img src="ravenlogo.png" alt="David Raven Games Logo">
             </div>
