@@ -22,6 +22,107 @@
             overflow-x: hidden;
         }
 
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.8s ease-out;
+        }
+
+        #loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .smoke-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        .smoke {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            filter: blur(30px);
+            opacity: 0;
+        }
+
+        .smoke.red {
+            background: radial-gradient(circle, #FF0000 0%, #8B0000 50%, transparent 100%);
+        }
+
+        .smoke.black {
+            background: radial-gradient(circle, #333 0%, #111 50%, transparent 100%);
+        }
+
+        .smoke:nth-child(1) {
+            animation: swirl 3s ease-in-out infinite;
+            animation-delay: 0s;
+        }
+
+        .smoke:nth-child(2) {
+            animation: swirl 3s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        .smoke:nth-child(3) {
+            animation: swirl 3s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .smoke:nth-child(4) {
+            animation: swirl 3s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+
+        .smoke:nth-child(5) {
+            animation: swirl 3s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        .smoke:nth-child(6) {
+            animation: swirl 3s ease-in-out infinite;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes swirl {
+            0% {
+                opacity: 0;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%) rotate(0deg) translateX(0px) scale(0.5);
+            }
+            25% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) rotate(90deg) translateX(120px) scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: translate(-50%, -50%) rotate(180deg) translateX(140px) scale(1.2);
+            }
+            75% {
+                opacity: 0.4;
+                transform: translate(-50%, -50%) rotate(270deg) translateX(120px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%) rotate(360deg) translateX(0px) scale(0.5);
+            }
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -378,6 +479,18 @@
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="smoke-container">
+            <div class="smoke red"></div>
+            <div class="smoke black"></div>
+            <div class="smoke red"></div>
+            <div class="smoke black"></div>
+            <div class="smoke red"></div>
+            <div class="smoke black"></div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav>
         <div class="dice-container">
@@ -411,8 +524,8 @@
     <section id="games">
         <div class="games-container">
             <div class="social-button">
-                <a href="https://www.instagram.com/davidravengames" target="_blank">📷 Follow us on Instagram</a>
-                <a href="https://www.kickstarter.com/profile/davidravengames" target="_blank" style="margin-left: 20px;">🚀 Support us on Kickstarter</a>
+                <a href="https://www.instagram.com/davidravengames" target="_blank">ðŸ“· Follow us on Instagram</a>
+                <a href="https://www.kickstarter.com/profile/davidravengames" target="_blank" style="margin-left: 20px;">ðŸš€ Support us on Kickstarter</a>
             </div>
             <h2 class="section-title">Our Games</h2>
             <div class="games-grid">
@@ -507,16 +620,31 @@
                     Email: <a href="mailto:info@davidravengames.com">info@davidravengames.com</a>
                 </p>
                 <div class="social-links">
-                    <a href="#" aria-label="Twitter">🐦</a>
-                    <a href="#" aria-label="Facebook">📘</a>
-                    <a href="#" aria-label="Instagram">📷</a>
-                    <a href="#" aria-label="BoardGameGeek">🎲</a>
+                    <a href="#" aria-label="Twitter">ðŸ¦</a>
+                    <a href="#" aria-label="Facebook">ðŸ“˜</a>
+                    <a href="#" aria-label="Instagram">ðŸ“·</a>
+                    <a href="#" aria-label="BoardGameGeek">ðŸŽ²</a>
                 </div>
             </div>
         </div>
     </section>
 
     <script>
+        // Loading screen functionality
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            
+            // Wait 5 seconds then fade out
+            setTimeout(function() {
+                loadingScreen.classList.add('fade-out');
+                
+                // Remove from DOM after fade completes
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 800);
+            }, 5000);
+        });
+
         // Dice rolling on scroll
         const dice = document.getElementById('dice');
         let lastScrollY = window.scrollY;
